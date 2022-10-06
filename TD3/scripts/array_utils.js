@@ -10,16 +10,12 @@ const countEvenInts = (array) => {
 const getBiggestEven = (...list) => {
   if (list.length < 1) return undefined;
   let max = undefined;
-  for (let val of list[0]) {
+  for (let val of list) {
     if (val % 2 !== 0) continue;
     if (max === undefined) max = val;
     else if (max < val) max = val;
   }
   return max;
-};
-
-const isElementInList = (elem, list) => {
-  return list[binarySearch(elem, list)] === elem;
 };
 
 function binarySearch(elem, list) {
