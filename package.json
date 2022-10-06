@@ -1,0 +1,24 @@
+{
+  "name": "lp-progwebcli-td2",
+  "version": "1.0.0",
+  "description": "Travaille dirigé 2 en ProgWebClient de Hippert Yann",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yannHippert/LP-ProgWebCli-TD2.git"
+  },
+  "author": "Yann Hippert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yannHippert/LP-ProgWebCli-TD2/issues"
+  },
+  "homepage": "https://github.com/yannHippert/LP-ProgWebCli-TD2#readme",
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
