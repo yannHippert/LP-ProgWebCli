@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <script type="module" src="../scripts/main.js"></script>
+    <title>TD3 - Hippert Yann</title>
+  </head>
+  <body>
+    <header>
+      <h1>TD3 - Hippert Yann</h1>
+    </header>
+    <main>
+      <div class="controlls">
+        <p>Saisie des éléments du tableau:</p>
+        <div class="input-wrapper">
+          <div id="inputs"></div>
+          <button id="add-value">+</button>
+        </div>
+        <div class="search">
+          <label for="search-input">Element à rechercher:</label>
+          <input type="number" id="search-input" />
+        </div>
+        <button id="evaluate-button">Produire les résultats</button>
+      </div>
+      <div class="output">
+        <p>Somme des élements: <span id="sum"></span></p>
+        <p>Nombre de pairs: <span id="evens"></span></p>
+        <p>Plus grand élément pair: <span id="max-even"></span></p>
+        <p>
+          Position de l'élément dans la table: <span id="search-res"></span>
+        </p>
+      </div>
+    </main>
+  </body>
+
+  <template id="value-input">
+    <div>
+      <label>Elément %s</label>
+      <input type="number" class="value-input" />
+    </div>
+  </template>
+</html>
