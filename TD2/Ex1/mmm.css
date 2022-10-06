@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+  font-size: 15px;
+  color: #8b0000;
+  font-weight: bold;
+  padding-top: 1rem;
+}
+
+p {
+  padding-bottom: 1rem;
+}
+
+.bg-color {
+  background-color: lightblue;
+}
+
+/*
+h2 {
+    text-transform: uppercase;
+}
+*/

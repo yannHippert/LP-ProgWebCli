@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/game.css" />
+    <script type="module" src="../scripts/main.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous" />
+    <title>TD2 Morpion - Hippert Yann</title>
+  </head>
+  <body>
+    <header>
+      <h1>TD2 Morpion - Hippert Yann</h1>
+      <nav>
+        <img
+          id="back-button"
+          src="../res/left-arrow-svgrepo-com.svg"
+          alt="Back button"
+          class="back-button" />
+      </nav>
+    </header>
+    <main>
+      <div class="vertical-container pb-4">
+        <p>Played/Draws:</p>
+        <p>
+          <span id="playedCounter">0</span>/<span id="drawsCounter">0</span>
+        </p>
+      </div>
+      <div id="field-container"></div>
+      <div class="grid-3 pt-4">
+        <div class="vertical-container player-container">
+          <div class="horizontal-container">
+            <img src="../res/x-light.svg" alt="Player1's sign" class="mr-2" />
+            <p id="player1Name" class="playerName h1">Player1</p>
+          </div>
+          <span id="player1Score" class="score display-1">0</span>
+        </div>
+        <div class="vertical-container">
+          <span id="turn-label" class="text-2xl">Player1's turn</span>
+        </div>
+        <div class="vertical-container player-container">
+          <div class="horizontal-container">
+            <p id="player2Name" class="playerName h1">Player2</p>
+            <img src="../res/o-light.svg" alt="Player2's sign" class="ml-2" />
+          </div>
+          <span id="player2Score" class="score display-1">0</span>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <template id="cell-template">
+    <div class="cell"></div>
+  </template>
+</html>
