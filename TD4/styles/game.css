@@ -1,0 +1,116 @@
+.back-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  height: 50px;
+  cursor: pointer;
+}
+
+#field-container {
+  gap: var(--line-width);
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.player-container img {
+  width: 30px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-3 .cell {
+  width: calc(min(50vh, 50vw) / 3);
+  height: calc(min(50vh, 50vw) / 3);
+}
+
+.grid-8 {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.grid-8 .cell {
+  width: calc(min(50vh, 50vw) / 8);
+  height: calc(min(50vh, 50vw) / 8);
+}
+
+.cell {
+  position: relative;
+  cursor: pointer;
+  background-color: white;
+  overflow: hidden;
+}
+
+.red::before,
+.blue::before {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+}
+
+.red::before {
+  content: url(../res/x-symbol.svg);
+}
+
+.blue::before {
+  content: url(../res/o-symbol.svg);
+}
+
+.vertical::after,
+.horizontal::after,
+.diagonal::after,
+.inverseDiagonal::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: var(--line-width);
+  height: var(--line-width);
+  background-color: red;
+}
+
+.vertical::after {
+  height: 200px;
+  left: calc(50% - var(--line-width) / 2);
+}
+
+.horizontal::after {
+  width: 200px;
+  top: calc(50% - var(--line-width) / 2);
+}
+
+.diagonal::after {
+  height: 200%;
+  top: -50%;
+  left: calc(50% - var(--line-width) / 2);
+  rotate: 45deg;
+}
+
+.inverseDiagonal::after {
+  height: 200%;
+  top: -50%;
+  left: calc(50% - var(--line-width) / 2);
+  rotate: -45deg;
+}
+
+.scoreboard {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+
+.vertical-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.score {
+  font-size: 2rem;
+  font-weight: 500;
+}
