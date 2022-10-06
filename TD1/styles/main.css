@@ -1,0 +1,54 @@
+:root {
+  --bg-color: dark-grey;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+h1 {
+  padding: 1rem;
+}
+
+main,
+#buttons {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1rem;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.language-selector {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.language-selector > span {
+  cursor: pointer;
+}
+
+.selected {
+  text-decoration: underline;
+}
+
+label,
+input {
+  cursor: pointer;
+}
