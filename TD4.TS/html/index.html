@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous" />
+    <script type="module" src="../scripts/params.js"></script>
+    <title>TD2 - Hippert Yann</title>
+  </head>
+  <body>
+    <header>
+      <h1>TD2 - Hippert Yann</h1>
+    </header>
+    <main>
+      <form action="play.html">
+        <div class="flex-container">
+          <div class="vertical-cotainer">
+            <p>FIELDSIZE</p>
+            <div class="horizontal-container">
+              <input
+                type="radio"
+                name="size"
+                id="size3x3"
+                class="btn-check"
+                value="3"
+                checked="true" />
+              <label for="size3x3" class="btn btn-primary">3x3</label>
+              <input
+                type="radio"
+                name="size"
+                id="size8x8"
+                class="btn-check"
+                value="8" />
+              <label for="size8x8" class="btn btn-primary">8x8</label>
+            </div>
+          </div>
+          <div class="vertical-cotainer">
+            <p>MODE</p>
+            <div class="horizontal-container">
+              <input
+                type="radio"
+                name="mode"
+                id="easy-mode"
+                class="btn-check"
+                value="easy"
+                checked="true" />
+              <label for="easy-mode" class="btn btn-primary">Easy</label>
+              <input
+                type="radio"
+                name="mode"
+                id="hard-mode"
+                class="btn-check"
+                value="hard" />
+              <label for="hard-mode" class="btn btn-primary">Hard</label>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success p-4">▶ PLAY</button>
+        <div class="flex-container">
+          <div class="vertical-container">
+            <label for="player1" class="form-label">Player1</label>
+            <input
+              type="text"
+              name="player1"
+              value="Player1"
+              id="player1Input"
+              class="form-control" />
+          </div>
+          <div class="vertical-container">
+            <label for="player2" class="form-label">Player2</label>
+            <input
+              type="text"
+              name="player2"
+              value="Player2"
+              id="player2Input"
+              class="form-control" />
+          </div>
+        </div>
+      </form>
+    </main>
+  </body>
+
+  <template id="cell-template">
+    <div class="cell"></div>
+  </template>
+</html>
