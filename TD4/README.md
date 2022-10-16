@@ -1,6 +1,7 @@
 # LP-ProgWebCli-TD4
 
-Travaille dirigé 2 en ProgWebClient de Hippert Yann
+Travaille dirigé 4 en ProgWebClient de Hippert Yann
+Ceci est la version correcte
 
 ## Sujet du TD4
 
