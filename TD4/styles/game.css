@@ -26,6 +26,16 @@
   height: calc(min(50vh, 50vw) / var(--width));
 }
 
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-3 .cell {
+  width: calc(min(50vh, 50vw) / 3);
+  height: calc(min(50vh, 50vw) / 3);
+}
+
 .cell {
   position: relative;
   cursor: pointer;
