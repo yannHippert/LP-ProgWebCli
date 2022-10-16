@@ -127,7 +127,7 @@ class Morpion {
   }
 
   evaluateField(row, col, minCount = this.#size) {
-    this.getChecks(row, col).forEach((check) => {
+    for (const check of this.getChecks(row, col)) {
       if (check.cells.length >= minCount) {
         this.#winInfo = {
           cells: check.cells,
@@ -136,7 +136,7 @@ class Morpion {
         };
         return check.label;
       }
-    });
+    }
     return undefined;
   }
 

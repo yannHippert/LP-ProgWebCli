@@ -103,7 +103,7 @@ const updateTurn = () => {
 const populateBoard = () => {
   const size = morpion.getSize();
   const fieldDiv = document.getElementById('field-container');
-  fieldDiv.className = `grid-${size}`;
+  fieldDiv.style.setProperty('--width', size);
   const cellTemplate = document.getElementById('cell-template');
   for (let i = 0; i < size; i++) {
     for (let j = 0; j < size; j++) {
