@@ -11,6 +11,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous" />
+    <script type="module" src="../scripts/uibuilder.js"></script>
     <script type="module" src="../../dist/TD4.TS/scripts/params.js"></script>
     <title>TD2 - Hippert Yann</title>
   </head>
@@ -23,23 +24,7 @@
         <div class="flex-container">
           <div class="vertical-cotainer">
             <p>FIELDSIZE</p>
-            <div class="horizontal-container" id="size-container">
-              <input
-                type="radio"
-                name="size"
-                id="size3x3"
-                class="btn-check"
-                value="3"
-                checked="true" />
-              <label for="size3x3" class="btn btn-primary">3x3</label>
-              <input
-                type="radio"
-                name="size"
-                id="size8x8"
-                class="btn-check"
-                value="8" />
-              <label for="size8x8" class="btn btn-primary">8x8</label>
-            </div>
+            <div id="fieldSize-container"></div>
           </div>
           <div class="vertical-cotainer">
             <p>MODE</p>
@@ -87,7 +72,8 @@
     </main>
   </body>
 
-  <template id="cell-template">
-    <div class="cell"></div>
+  <template id="fieldSize-template">
+    <input type="radio" name="size" class="btn-check" />
+    <label class="btn btn-primary"></label>
   </template>
 </html>

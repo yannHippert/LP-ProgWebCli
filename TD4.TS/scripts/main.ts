@@ -1,7 +1,7 @@
 import { ICell, IParams, IPlayers } from '../interfaces/interfaces.js';
 import EasyMorpion from './easyMorpion.js';
 import { MODES } from './enums.js';
-import Morpion from './morpion.js';
+import Morpion, { IWinInfo } from './morpion.js';
 
 let morpion: Morpion | EasyMorpion;
 const players: IPlayers = {
@@ -11,7 +11,7 @@ const players: IPlayers = {
 
 const handleCellClick = (e: MouseEvent) => {
   e.preventDefault();
-  const el = e.target;
+  const el = e.target as HTMLElement;
   if (!el) return;
   const row = Number(el.getAttribute('data-row'));
   const col = Number(el.getAttribute('data-col'));
@@ -24,32 +24,32 @@ const handleCellClick = (e: MouseEvent) => {
     if (morpion.isDraw()) {
       setTimeout(() => handleDraw(), 500);
     } else {
-      const winInfo = morpion.getWinInfo();
+      const winInfo = morpion.getWinInfo() as IWinInfo;
       markCells(winInfo.cells, winInfo.winDirection);
       if (winInfo.winner) {
-        const winner: keyof IPlayers = winInfo.winner;
+        const winner: keyof IPlayers = winInfo.winner as keyof IPlayers;
         setTimeout(() => handleWin(winner), 500);
       }
     }
   }
 };
 
-const markCells = (cellIndecies: number, className: string) => {
+const markCells = (cellIndecies: Array<ICell>, className: string) => {
   const cells = document.querySelectorAll('.cell');
-  cells.forEach((cell: ICell) => {
-    const cellIndex = getCellIndex(cell);
+  for (const cell of cells) {
+    const cellIndex = getCellIndex(cell as HTMLElement);
     if (containsObject(cellIndex, cellIndecies)) cell.classList.add(className);
-  });
+  }
 };
 
-function getCellIndex(cell) {
+function getCellIndex(cell: HTMLElement) {
   return {
     row: Number(cell.getAttribute('data-row')),
     col: Number(cell.getAttribute('data-col')),
   };
 }
 
-function containsObject(obj, list) {
+function containsObject(obj: ICell, list: Array<ICell>) {
   for (const item of list) {
     if (item.col === obj.col && item.row === obj.row) return true;
   }
@@ -112,14 +112,13 @@ const populateBoard = () => {
   const size = morpion.getSize();
   const fieldDiv = document.getElementById('field-container');
   if (!fieldDiv) return;
-  fieldDiv.className = `grid-${size}`;
-  const cellTemplate = document.getElementById('cell-template');
-  if (!cellTemplate) return;
+  fieldDiv.style.setProperty('--width', String(size));
   for (let i = 0; i < size; i++) {
     for (let j = 0; j < size; j++) {
-      const cellDiv = cellTemplate.content.cloneNode(true).querySelector('div');
-      cellDiv.setAttribute('data-row', i);
-      cellDiv.setAttribute('data-col', j);
+      const cellDiv = document.createElement('div');
+      cellDiv.className = 'cell';
+      cellDiv.setAttribute('data-row', String(i));
+      cellDiv.setAttribute('data-col', String(j));
       cellDiv.addEventListener('click', handleCellClick);
       fieldDiv.appendChild(cellDiv);
     }

@@ -6,9 +6,9 @@ import {
 } from './matrix.js';
 import { DIRECTIONS } from './enums.js';
 
-interface IWinInfo {
+export interface IWinInfo {
   cells: Array<{ row: number; col: number }>;
-  winDirection?: string;
+  winDirection: string;
   winner?: number;
 }
 
@@ -34,7 +34,7 @@ class Morpion {
     this.#isGameOver = false;
     this.#winInfo = {
       cells: [],
-      winDirection: undefined,
+      winDirection: '',
     };
     this.#turnToken = 1;
     this.#score = {
@@ -56,7 +56,7 @@ class Morpion {
     this.#isGameOver = false;
     this.#winInfo = {
       cells: [],
-      winDirection: undefined,
+      winDirection: '',
     };
     this.#playedTurns = 0;
     this.populateField();
@@ -146,7 +146,7 @@ class Morpion {
   }
 
   evaluateField(row: number, col: number, minCount = this.#size) {
-    this.getChecks(row, col).forEach((check) => {
+    for (const check of this.getChecks(row, col)) {
       if (check.cells.length >= minCount) {
         this.#winInfo = {
           cells: check.cells,
@@ -155,11 +155,11 @@ class Morpion {
         };
         return check.label;
       }
-    });
+    }
     return undefined;
   }
 
-  getWinInfo() {
+  getWinInfo(): IWinInfo {
     return this.#winInfo;
   }
 }

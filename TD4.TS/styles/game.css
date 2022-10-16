@@ -16,6 +16,16 @@
   width: 30px;
 }
 
+.morpion-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--width), 1fr);
+}
+
+.morpion-grid .cell {
+  width: calc(min(50vh, 50vw) / var(--width));
+  height: calc(min(50vh, 50vw) / var(--width));
+}
+
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -24,16 +34,6 @@
 .grid-3 .cell {
   width: calc(min(50vh, 50vw) / 3);
   height: calc(min(50vh, 50vw) / 3);
-}
-
-.grid-8 {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-}
-
-.grid-8 .cell {
-  width: calc(min(50vh, 50vw) / 8);
-  height: calc(min(50vh, 50vw) / 8);
 }
 
 .cell {
