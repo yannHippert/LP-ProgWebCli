@@ -7,8 +7,16 @@ const displayWeather = (weatherData) => {
   const weatherDataRow = document.getElementById('weather-data');
   weatherDataRow.innerHTML = '';
   for (const key of fields) {
-    weatherDataRow.append(createTd(String(weatherData[key])));
+    weatherDataRow.append(createTd(String(weatherData.main[key])));
   }
+  const weather = weatherData.weather[0];
+  document.getElementById('weather-icon').src =
+    config.openWeather.iconUrl.replace(
+      config.openWeather.iconPlaceholder,
+      weather.icon
+    );
+
+  document.getElementById('weather-desc').innerText = weather.main;
 };
 
 const fetchWeather = (communeName) => {
@@ -20,7 +28,7 @@ const fetchWeather = (communeName) => {
         if (!res.ok) reject(res);
         else return res.json();
       })
-      .then((json) => resolve(json.main))
+      .then((json) => resolve(json))
       .catch(reject);
   });
 };
