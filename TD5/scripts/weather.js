@@ -2,7 +2,6 @@ import config from './config.js';
 import { createTd } from './utils.js';
 
 const displayWeather = (weatherData) => {
-  console.log(weatherData);
   const fields = ['feels_like', 'temp', 'temp_min', 'temp_max', 'humidity'];
   const weatherDataRow = document.getElementById('weather-data');
   weatherDataRow.innerHTML = '';

@@ -1,5 +1,5 @@
 import config from './config.js';
-import { sortByName, createOption, getElement } from './utils.js';
+import { sortByName, createOption, getElement, displayError } from './utils.js';
 
 let departments = [];
 let communes = [];
@@ -96,7 +96,7 @@ const handleLoad = async () => {
     displayDepartments();
     handleDepartmentChange(departments[0].code);
   } catch (err) {
-    console.error(err);
+    displayError(err);
   }
 };
 
