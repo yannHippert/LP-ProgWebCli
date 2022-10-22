@@ -5,20 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/default.css" />
     <link rel="stylesheet" href="../styles/weather.css" />
-    <script type="module" src="../scripts/weather.js"></script>
-    <title>Weather</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <script type="module" src="../scripts/weatherInit.js"></script>
+    <title>TD5 - Weather</title>
   </head>
   <body>
-    <h1 id="name"></h1>
-    <table>
-      <tr>
-        <th>Temperature</th>
-        <th>Feels like</th>
-        <th>Min</th>
-        <th>Max</th>
-        <th>Humidity</th>
-      </tr>
-      <tr id="weather-data"></tr>
-    </table>
+    <header>
+      <nav>
+        <i class="fa-solid fa-arrow-left" id="back-button"></i>
+      </nav>
+    </header>
+
+    <div class="alert alert-danger" role="alert" id="error"></div>
+
+    <main>
+      <h1>Weather</h1>
+      <h2 id="name"></h2>
+      <table>
+        <tr>
+          <th>Temperature</th>
+          <th>Feels like</th>
+          <th>Min</th>
+          <th>Max</th>
+          <th>Humidity</th>
+        </tr>
+        <tr id="weather-data"></tr>
+      </table>
+    </main>
   </body>
 </html>

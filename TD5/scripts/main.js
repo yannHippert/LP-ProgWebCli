@@ -4,8 +4,14 @@ import { sortByName, createOption, getElement } from './utils.js';
 let departments = [];
 let communes = [];
 
-const displayPopulation = (communeId) => {
-  const commune = getElement(communes, communeId);
+const selectedDepartment = () =>
+  getElement(departments, document.getElementById('department-select').value);
+
+const selectedCommune = () =>
+  getElement(communes, document.getElementById('commune-select').value);
+
+const displayPopulation = () => {
+  const commune = selectedCommune();
   document.getElementById('population').innerHTML = String(commune.population);
 };
 
@@ -19,14 +25,15 @@ const displayCommunes = () => {
 };
 
 const fetchCommunes = (departmentCode) => {
-  fetch(`${config.gouv.baseUrl}/departements/${departmentCode}/communes`)
-    .then((res) => res.json())
-    .then((json) => {
-      communes = json.sort(sortByName);
-      displayCommunes();
-      displayPopulation(communes[0].code);
-      localStorage.setItem('communeName', communes[0].nom);
-    });
+  return new Promise((resolve, reject) => {
+    fetch(`${config.gouv.baseUrl}/departements/${departmentCode}/communes`)
+      .then((res) => {
+        if (!res.ok) reject(res);
+        else return res.json();
+      })
+      .then((json) => resolve(json.sort(sortByName)))
+      .catch(reject);
+  });
 };
 
 const displayDepartments = () => {
@@ -36,40 +43,61 @@ const displayDepartments = () => {
       createOption(department.code, `${department.code} - ${department.nom}`)
     );
   }
-  fetchCommunes(departmentSelect.value);
 };
 
 const fetchDepartments = () => {
-  fetch(`${config.gouv.baseUrl}/departements`)
-    .then((res) => res.json())
-    .then((json) => {
-      departments = json.sort(sortByName);
-      displayDepartments();
-      localStorage.setItem('departmentName', departments[0].nom);
-    });
+  return new Promise((resolve, reject) => {
+    fetch(`${config.gouv.baseUrl}/departements`)
+      .then((res) => {
+        if (!res.ok) reject(res);
+        else return res.json();
+      })
+      .then((json) => resolve(json.sort(sortByName)))
+      .catch(reject);
+  });
+};
+
+const handleDepartmentChange = () => {
+  const department = selectedDepartment();
+  localStorage.setItem('departmentName', department.nom);
+  //localStorage.setItem('department', JSON.stringify(department));
+  fetchCommunes(department.code)
+    .then((pCommunes) => {
+      communes = pCommunes;
+      displayCommunes();
+      handleCommuneChange(communes[0].code);
+    })
+    .catch(console.error);
+};
+
+const handleCommuneChange = () => {
+  const commune = selectedCommune();
+  localStorage.setItem('communeName', commune.nom);
+  //localStorage.setItem('commune', JSON.stringify(commune));
+  displayPopulation();
 };
 
 const initListeners = () => {
   const departmentSelect = document.getElementById('department-select');
-  departmentSelect.addEventListener('change', () => {
-    const department = getElement(departments, departmentSelect.value);
-    localStorage.setItem('departmentName', department.nom);
-    //sessionStorage.setItem('department', JSON.stringify(department));
-    fetchCommunes(departmentSelect.value);
-  });
+  departmentSelect.addEventListener('change', () =>
+    handleDepartmentChange(departmentSelect.value)
+  );
 
   const communeSelect = document.getElementById('commune-select');
-  communeSelect.addEventListener('change', () => {
-    const commune = getElement(communes, communeSelect.value);
-    localStorage.setItem('communeName', commune.nom);
-    //sessionStorage.setItem('commune', JSON.stringify(commune));
-    displayPopulation(communeSelect.value);
-  });
+  communeSelect.addEventListener('change', () =>
+    handleCommuneChange(communeSelect.value)
+  );
 };
 
-const handleLoad = () => {
+const handleLoad = async () => {
   initListeners();
-  fetchDepartments();
+  try {
+    departments = await fetchDepartments();
+    displayDepartments();
+    handleDepartmentChange(departments[0].code);
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 window.addEventListener('load', handleLoad);

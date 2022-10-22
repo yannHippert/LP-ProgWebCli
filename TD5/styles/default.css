@@ -1,4 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 main {
+  padding-top: 3rem;
   width: 80%;
   margin: 0 auto;
   display: flex;
@@ -7,9 +13,24 @@ main {
   align-items: center;
 }
 
+h1 {
+  padding: 2rem;
+  text-decoration: underline;
+}
+
 h1,
 p {
   text-align: center;
+}
+
+a {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  display: block;
+  color: white;
+  background-color: rgb(27, 27, 127);
+  text-decoration: none;
+  border-radius: 5px;
 }
 
 table {
@@ -23,4 +44,24 @@ td {
   text-align: center;
   background-color: white;
   padding: 0.2rem 1rem;
+}
+
+#back-button {
+  cursor: pointer;
+  margin: 1rem;
+  font-size: 4rem;
+}
+
+#error {
+  display: none;
+  width: 100%;
+  color: darkred;
+  font-size: 2rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(213, 55, 55, 0.8);
+}
+
+.visible {
+  display: block !important;
 }

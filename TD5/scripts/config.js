@@ -16,9 +16,18 @@ const OPENWEATHER_CONFIG = {
   iconPlaceholder: OPENWEATHER_ICON_PLACEHOLDER,
 };
 
+const CONTROL_BASE_URL = 'https://data.economie.gouv.fr';
+const CONTROL_API_URL = `${CONTROL_BASE_URL}/api/records/1.0/search/`;
+
+const CONTROL_CONFIG = {
+  baseUrl: CONTROL_BASE_URL,
+  apiUrl: CONTROL_API_URL,
+};
+
 const config = {
   gouv: GOUV_CONFIG,
   openWeather: OPENWEATHER_CONFIG,
+  control: CONTROL_CONFIG,
 };
 
 export default config;
