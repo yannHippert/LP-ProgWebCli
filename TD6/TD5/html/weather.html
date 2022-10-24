@@ -1,0 +1,41 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/default.css" />
+    <link rel="stylesheet" href="../styles/weather.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="module" src="../scripts/weatherInit.js"></script>
+    <title>TD5 - Weather</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <i class="fa-solid fa-arrow-left" id="back-button"></i>
+      </nav>
+    </header>
+
+    <div class="alert alert-danger" role="alert" id="error"></div>
+
+    <main>
+      <h1>Weather</h1>
+      <h2 id="name"></h2>
+      <img id="weather-icon" src="" alt="Weather icon" />
+      <p id="weather-desc"></p>
+      <table>
+        <tr>
+          <th>Temperature (°C)</th>
+          <th>Feels like (°C)</th>
+          <th>Min (°C)</th>
+          <th>Max (°C)</th>
+          <th>Humidity (%)</th>
+        </tr>
+        <tr id="weather-data"></tr>
+      </table>
+    </main>
+  </body>
+</html>
